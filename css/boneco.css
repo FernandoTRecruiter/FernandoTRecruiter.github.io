@@ -1,0 +1,40 @@
+/* =============================================================================
+   boneco.css: o personagem do canto (img/boneco.webp + camadas do rosto).
+   Aqui: o tamanho, o lugar do balão (acima da cabeça), quais camadas aparecem
+   em cada estado (piscar, piscadinha, boca) e o movimento (respirar, balançar).
+   ============================================================================= */
+
+/* ---------- tamanho: busto (imagem de 344 x 533) ---------- */
+.boneco { width: 112px; height: 174px; }
+/* Balão ACIMA da cabeça, encostado à esquerda: o espaço em cima do boneco está
+   vazio, e assim o balão não cobre os projetos à direita. A ponta (canto de baixo
+   à esquerda) aponta para a cabeça. */
+.balao { left: 0; bottom: 178px; width: min(232px, calc(100vw - 36px)); }   /* estreito e alto: não cobre a página */
+/* de 1100 a 1299 px a faixa do narrador (site.css) é menor, então o balão também */
+@media (min-width: 1100px) and (max-width: 1299px) { .balao { width: 200px; } }
+@media (max-width: 640px) {
+  .boneco { width: 80px; height: 124px; }
+  .balao { left: 0; bottom: 128px; width: calc(100vw - 24px); }
+}
+
+/* ---------- camadas do rosto ---------- */
+.bn-iris { transition: transform .15s linear; }
+.bn-fechado, .bn-boca { display: none; }
+.bn-fechados .bn-fechado { display: inline; }                       /* piscar: esquerdo fechado... */
+.bn-fechados .bn-olho, .bn-piscadinha .bn-dir { display: none; }   /* ...e o direito volta ao da ilustração (fechado) */
+.bn[data-boca="1"] .bn-boca-1, .bn[data-boca="2"] .bn-boca-2 { display: inline; }
+.bn-boca path { fill: #6E2F33; stroke: #3A1E1A; stroke-width: .9; stroke-linejoin: round; }
+.bn-boca .bn-lingua { fill: #E2828C; stroke: none; }
+
+/* ---------- movimento ---------- */
+/* o grupo de fora respira; o de dentro balança de leve (mais rápido enquanto ele fala) */
+#boneco .bn-corpo { transform-box: view-box; transform-origin: 50% 100%; animation: bn-respira 4.2s ease-in-out infinite; }
+#boneco .bn-mexe { transform-box: view-box; transform-origin: 50% 70%; animation: bn-balanca 6.5s ease-in-out infinite; }
+#boneco.bn-falando .bn-mexe { animation: bn-fala .9s ease-in-out infinite; }
+@keyframes bn-respira { 50% { transform: translateY(1.5px) scaleY(.994); } }
+@keyframes bn-balanca { 0%, 100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+@keyframes bn-fala { 0%, 100% { transform: rotate(-1.5deg) translateY(0); } 50% { transform: rotate(1.5deg) translateY(-2px); } }
+.bn-parado .bn-corpo, .bn-parado .bn-mexe, .bn-parado .bn-iris { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .bn .bn-corpo, .bn .bn-mexe, .bn .bn-iris { animation: none !important; transition: none !important; }
+}

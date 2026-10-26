@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fernando Paoli · dados de RH, painéis e automação</title>
+<meta name="description" content="Portfólio de Fernando Paoli: do recrutamento tech à parte de dados do RH. Painéis de People Analytics, automações e pequenos apps de RH, com o Claude Code como dupla.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Fernando Paoli · dados de RH, painéis e automação">
+<meta property="og:description" content="O que eu construí e por que construí desse jeito. Demos com dados fictícios.">
+<meta property="og:image" content="https://fernandotrecruiter.github.io/img/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ícone da aba: o emoji de morcego (não existe logo desenhada) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%87%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/gato.css">
+<link rel="stylesheet" href="css/boneco.css">
+</head>
+<body>
+<a class="pular" href="#conteudo" data-i18n="pular">Pular para o conteúdo</a>
+
+<!-- ===================== barra do topo (não mexe de lugar) ===================== -->
+<header class="topo">
+  <a class="marca" href="#inicio" aria-label="Fernando Paoli, início">
+    <span class="marca-emoji" aria-hidden="true">🦇</span>
+    <span>Fernando Paoli</span>
+  </a>
+  <nav class="atalhos" aria-label="Seções">
+    <a href="#trajetoria" data-i18n="nav_trajetoria">Trajetória</a>
+    <a href="#projetos" data-i18n="nav_projetos">Projetos</a>
+    <a href="#j-cases" data-i18n="nav_cases">O que já fiz</a>
+    <a href="#aprendi" data-i18n="nav_aprendi">O que aprendi</a>
+    <a href="#contato" data-i18n="nav_contato">Contato</a>
+  </nav>
+  <div class="controles">
+    <div class="seg" role="group" aria-label="Idioma"><button data-lang="pt" class="ativo">PT</button><button data-lang="en">EN</button></div>
+    <button class="botao-icone" data-tema aria-label="Trocar tema"><span class="sol">☀</span><span class="lua">☾</span></button>
+  </div>
+</header>
+
+<main id="conteudo">
+<!-- ===================== 1. abertura ===================== -->
+<section class="abertura" id="inicio" data-fala="inicio">
+  <div class="ab-texto">
+    <p class="eyebrow" data-i18n="ab_eyebrow">PORTFÓLIO · DADOS DE RH · AUTOMAÇÃO</p>
+    <h1><span data-i18n="ab_oi">Oi, eu sou o</span> <em>Fernando</em>.</h1>
+    <p class="ab-lead" data-i18n="ab_lead">Vim do recrutamento tech e hoje trabalho na parte de dados do RH: painéis de pessoas, automações e pequenos apps, com o Claude Code como dupla.</p>
+    <div class="ab-acoes">
+      <a class="botao primario" href="#projetos" data-i18n="ab_ver">Ver o que construí ↓</a>
+      <a class="botao" href="https://www.linkedin.com/in/fernandopaoli" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="botao" href="https://github.com/FernandoTRecruiter" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <div class="ab-3d">
+    <canvas id="constelacao" aria-label="Mapa 3D das minhas ferramentas e projetos" role="img"></canvas>
+    <p class="ab-3d-dica mono" data-i18n="ab_dica3d">arraste para girar · clique num projeto</p>
+  </div>
+</section>
+
+<!-- ===================== 2. trajetória (logo depois da abertura: quem eu sou antes do que eu fiz) ===================== -->
+<section id="trajetoria" aria-labelledby="t-traj" data-fala="trajetoria">
+  <h2 class="titulo-secao" id="t-traj"><span class="mono">01</span> <span data-i18n="t_traj">Trajetória</span></h2>
+  <ol class="linha-tempo">
+    <li><span class="lt-quando mono">2023</span><b data-i18n="lt1_t">Começo no RH, pelo recrutamento</b><span data-i18n="lt1">Comecei numa das maiores consultorias de recrutamento do mundo. Lá aprendi como funciona um RH estratégico e a recrutar para posições concorridas, principalmente em tecnologia.</span></li>
+    <li><span class="lt-quando mono" data-i18n="lt2_q">depois</span><b data-i18n="lt2_t">Da vaga ao dado</b><span data-i18n="lt2">Aprendi a traduzir o que a empresa precisa em perfil, e o perfil em número. Vieram as primeiras análises e os primeiros painéis.</span></li>
+    <li><span class="lt-quando mono">2026</span><b data-i18n="lt3_t">People Analytics</b><span data-i18n="lt3">Onde comecei a atuar de fato com dados de pessoas: análises, indicadores e painéis para a liderança.</span></li>
+    <li><span class="lt-quando mono" data-i18n="lt4_q">no caminho</span><b data-i18n="lt4_t">IA como motor de entrega</b><span data-i18n="lt4">Passei a usar IA no dia a dia e a estudar a ferramenta a fundo: o que ela faz bem, onde erra e como conferir.</span></li>
+    <li><span class="lt-quando mono" data-i18n="lt5_q">últimos meses</span><b data-i18n="lt5_t">Entregas</b><span data-i18n="lt5">Dashboard da liderança, painel de cada gestor, relatórios que rodam sozinhos e a conferência semanal dos números com agentes de IA.</span></li>
+    <li class="futuro"><span class="lt-quando mono" data-i18n="lt6_q">agora</span><b data-i18n="lt6_t">Dados e IA para estratégia</b><span data-i18n="lt6">Buscando me especializar em dados e IA com foco em estratégia e controle: números confiáveis para a empresa decidir.</span></li>
+  </ol>
+</section>
+
+<!-- ===================== 3. projetos em janelas ===================== -->
+<section id="projetos" aria-labelledby="t-projetos">
+  <h2 class="titulo-secao" id="t-projetos"><span class="mono">02</span> <span data-i18n="t_projetos">O que eu construí</span></h2>
+  <p class="intro-secao" data-i18n="intro_projetos">Cada janela é um projeto. O bonequinho aí embaixo conta o que eu fiz e por quê; as demos usam dados fictícios.</p>
+
+  <!-- Janela: dashboard executivo (demo) -->
+  <article class="janela" id="j-painel" data-fala="painel">
+    <div class="j-barra">
+      <div class="j-botoes"><button class="j-fechar" aria-label="Minimizar para a doca"></button><button class="j-min" aria-label="Recolher"></button><button class="j-max" aria-label="Tela cheia"></button></div>
+      <span class="j-titulo mono" data-i18n="jt_painel">dashboard-executivo · people analytics</span>
+    </div>
+    <div class="j-corpo">
+      <div class="j-iframe"><iframe title="Demo do dashboard executivo de pessoas" data-src="demo" loading="lazy"></iframe></div>
+    </div>
+    <footer class="j-rodape">
+      <p data-i18n="painel_desc">O painel de pessoas que fiz para a liderança, refeito do zero com uma empresa fictícia: cada número explica a conta, clicar numa barra mostra os nomes e uma aba mostra o mapa da unidade.</p>
+      <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SVG</span><span>People Analytics</span><span>Power BI</span></div>
+      <div class="links"><a data-link="demo" target="_blank" rel="noopener" data-i18n="abrir_inteira">Abrir em tela cheia ↗</a><a href="https://github.com/FernandoTRecruiter/people-analytics-dashboard" target="_blank" rel="noopener" data-i18n="ver_codigo">Ver o código ↗</a></div>
+      <details class="historia"><summary data-i18n="ler_historia">Ler a história em texto</summary><div data-historia="painel"></div></details>
+    </footer>
+  </article>
+
+  <!-- Janela: o que já fiz nas empresas (a lista vem de js/conteudo.js > cases) -->
+  <article class="janela" id="j-cases" data-fala="cases">
+    <div class="j-barra">
+      <div class="j-botoes"><button class="j-fechar" aria-label="Minimizar para a doca"></button><button class="j-min" aria-label="Recolher"></button><button class="j-max" aria-label="Tela cheia"></button></div>
+      <span class="j-titulo mono" data-i18n="jt_cases">o-que-ja-fiz · problema, solução, resultado</span>
+    </div>
+    <div class="j-corpo cases"><div class="cases-grade" id="lista-cases"></div></div>
+    <footer class="j-rodape">
+      <p data-i18n="cases_desc">O que eu já entreguei de verdade nas empresas, em três linhas cada e sem dado de ninguém.</p>
+      <details class="historia"><summary data-i18n="ler_historia">Ler a história em texto</summary><div data-historia="cases"></div></details>
+    </footer>
+  </article>
+
+  <!-- Janela: o caminho do dado, antes e depois (desenhado por js/pipeline.js) -->
+  <article class="janela" id="j-pipeline" data-fala="pipeline">
+    <div class="j-barra">
+      <div class="j-botoes"><button class="j-fechar" aria-label="Minimizar para a doca"></button><button class="j-min" aria-label="Recolher"></button><button class="j-max" aria-label="Tela cheia"></button></div>
+      <span class="j-titulo mono" data-i18n="jt_pipe">caminho-do-dado · antes e depois</span>
+      <span class="j-extra mono" data-i18n="pipe_extra">clique num bloco</span>
+    </div>
+    <div class="j-corpo pipe">
+      <div class="pipe-duo">
+        <figure class="pipe-lado antes"><figcaption><b data-i18n="pipe_antes_t">Antes</b><span data-i18n="pipe_antes_s">planilha exportada à mão</span></figcaption><svg id="pipe-antes" role="img"></svg></figure>
+        <figure class="pipe-lado depois"><figcaption><b data-i18n="pipe_depois_t">Depois: o ciclo de hoje</b><span data-i18n="pipe_depois_s">da fonte ao painel, numerado: comece pelo 1</span></figcaption><svg id="pipe-depois" role="img"></svg></figure>
+      </div>
+      <div class="pipe-base">
+        <ul class="pipe-leg">
+          <li><span class="dono-chip e-ti" data-i18n="chip_ti">TI</span><span data-i18n="leg_ti">infraestrutura e hospedagem</span></li>
+          <li><span class="dono-chip e-eu" data-i18n="chip_eu">eu</span><span data-i18n="leg_eu">montagem, conferência e acessos</span></li>
+          <li><span class="dono-chip e-ambos" data-i18n="chip_ambos">TI + eu</span><span data-i18n="leg_ambos">os dois juntos</span></li>
+        </ul>
+        <p class="pipe-dica" data-i18n="pipe_ini">Clique num bloco para ver o que ele é, por que existe e quem cuida dele. A ordem segue os números.</p>
+      </div>
+      <aside class="pipe-detalhe flutua" aria-live="polite" hidden></aside>
+    </div>
+    <footer class="j-rodape">
+      <p data-i18n="pipe_desc">O caminho do dado de RH. A TI cuida da infraestrutura (Data Lake e hospedagem); eu mapeei as bases, montei as tabelas por PR no Data Factory e confiro tudo com agentes.</p>
+      <div class="chips"><span>SQL</span><span>ERP</span><span>ATS</span><span>Azure Data Factory</span><span>Azure SQL</span><span>Python</span></div>
+      <details class="historia"><summary data-i18n="ler_historia">Ler a história em texto</summary><div data-historia="pipeline"></div></details>
+    </footer>
+  </article>
+
+  <!-- Janela: fluxos do Power Automate -->
+  <article class="janela" id="j-fluxos" data-fala="fluxos">
+    <div class="j-barra">
+      <div class="j-botoes"><button class="j-fechar" aria-label="Minimizar para a doca"></button><button class="j-min" aria-label="Recolher"></button><button class="j-max" aria-label="Tela cheia"></button></div>
+      <span class="j-titulo mono" data-i18n="jt_fluxos">power-automate · fluxos</span>
+    </div>
+    <div class="j-corpo fluxos">
+      <div class="abas-fluxo" role="tablist"></div>
+      <div class="fluxo-area"><svg id="fluxograma" role="img"></svg><aside class="fluxo-nota" aria-live="polite"></aside></div>
+    </div>
+    <footer class="j-rodape">
+      <p data-i18n="fluxos_desc">Quatro fluxos que eu desenhei e mantenho, redesenhados aqui sem nenhum dado da empresa: o gatilho, cada passo e para onde vai o aviso.</p>
+      <div class="chips"><span>Power Automate</span><span>SharePoint</span><span>Approvals</span><span>Teams</span><span>Outlook</span></div>
+      <details class="historia"><summary data-i18n="ler_historia">Ler a história em texto</summary><div data-historia="fluxos"></div></details>
+    </footer>
+  </article>
+
+  <!-- Janela: o time de agentes -->
+  <article class="janela" id="j-agentes" data-fala="agentes">
+    <div class="j-barra">
+      <div class="j-botoes"><button class="j-fechar" aria-label="Minimizar para a doca"></button><button class="j-min" aria-label="Recolher"></button><button class="j-max" aria-label="Tela cheia"></button></div>
+      <span class="j-titulo mono" data-i18n="jt_agentes">time-de-agentes · claude code</span>
+    </div>
+    <div class="j-corpo agentes"><div class="orbita" id="orbita"></div><aside class="agente-detalhe" aria-live="polite"></aside></div>
+    <footer class="j-rodape">
+      <p data-i18n="agentes_desc">Os agentes que eu criei no Claude Code. Cada um tem uma tarefa fixa, regras do que não pode fazer e devolve evidência: número, consulta ou foto da tela.</p>
+      <div class="chips"><span>Claude Code</span><span>Subagentes</span><span>Skills</span><span>Hooks</span><span>MCP</span></div>
+      <details class="historia"><summary data-i18n="ler_historia">Ler a história em texto</summary><div data-historia="agentes"></div></details>
+    </footer>
+  </article>
+
+  <!-- Janela: repositórios (a lista vem de js/projetos.js) -->
+  <article class="janela" id="j-repos" data-fala="repos">
+    <div class="j-barra">
+      <div class="j-botoes"><button class="j-fechar" aria-label="Minimizar para a doca"></button><button class="j-min" aria-label="Recolher"></button><button class="j-max" aria-label="Tela cheia"></button></div>
+      <span class="j-titulo mono" data-i18n="jt_repos">~/github · repositórios abertos</span>
+    </div>
+    <div class="j-corpo repos"><p class="repos-desc" data-i18n="repos_desc">Tudo que está aberto no meu GitHub. Clique para ver no ar ou ler o código.</p><div class="repos-grade" id="lista-projetos"></div></div>
+    <footer class="j-rodape"><details class="historia"><summary data-i18n="ler_historia">Ler a história em texto</summary><div data-historia="repos"></div></details></footer>
+  </article>
+</section>
+
+
+<!-- ===================== 4. fora do expediente (depois do trabalho, de propósito) ===================== -->
+<section id="fora" aria-labelledby="t-fora" data-fala="fora">
+  <div class="sobre">
+    <h3 id="t-fora"><span data-i18n="sobre_t">Fora do expediente</span> <small data-i18n="sobre_s">O que eu faço quando ninguém está pedindo relatório.</small></h3>
+    <div class="sobre-grade" id="sobre-mim"></div>
+  </div>
+</section>
+
+<!-- ===================== 5. o que aprendi + stack ===================== -->
+<section id="aprendi" aria-labelledby="t-aprendi" data-fala="aprendi">
+  <h2 class="titulo-secao" id="t-aprendi"><span class="mono">03</span> <span data-i18n="t_aprendi">O que eu aprendi</span></h2>
+  <div class="licoes">
+    <div class="licao"><span class="l-de mono" data-i18n="ld_paineis">painéis</span><p data-i18n="l1">Bateria verde não substitui abrir a tela e olhar.</p></div>
+    <div class="licao"><span class="l-de mono">power automate</span><p data-i18n="l2">"Aceito" não é "entregue". A prova é a mensagem chegando.</p></div>
+    <div class="licao"><span class="l-de mono">git</span><p data-i18n="l3">O que entra no histórico do repositório não sai mais. Dado pessoal nunca sobe.</p></div>
+    <div class="licao"><span class="l-de mono" data-i18n="ld_dados">dados</span><p data-i18n="l4">Dois sistemas só se comparam na mesma data de corte. Senão a diferença é do relógio, não do dado.</p></div>
+    <div class="licao"><span class="l-de mono" data-i18n="ld_apps">apps</span><p data-i18n="l5">Controle de acesso dentro do arquivo é cosmético. Segurança mora no servidor.</p></div>
+    <div class="licao"><span class="l-de mono" data-i18n="ld_req">requisitos</span><p data-i18n="l6">Pedido que chega em forma de lista costuma ser uma regra disfarçada. Escrever a regra, não a lista.</p></div>
+  </div>
+  <div class="stack-linha" id="stack">
+    <b class="mono">stack</b>
+    <div class="chips"><span>SQL</span><span>Python</span><span>Azure</span><span>Power BI</span><span>Power Automate</span><span>SharePoint</span><span>Apps Script</span><span>HTML · CSS · JavaScript</span><span>Git</span><span>Claude Code</span><span>People Analytics</span><span data-i18n="s_rs">Recrutamento tech</span></div>
+  </div>
+</section>
+
+<!-- ===================== 6. contato ===================== -->
+<section id="contato" class="contato" aria-labelledby="t-contato" data-fala="contato">
+  <p class="aberto"><span class="aberto-ponto" aria-hidden="true"></span><span data-i18n="aberto">Aberto a conversas e projetos</span></p>
+  <h2 id="t-contato"><span data-i18n="t_contato">Vamos conversar?</span></h2>
+  <p data-i18n="contato_txt">Se você precisa de alguém que entende de pessoas E de dado, me chama.</p>
+  <div class="ab-acoes"><a class="botao primario" href="https://www.linkedin.com/in/fernandopaoli" target="_blank" rel="noopener">LinkedIn ↗</a><a class="botao" href="https://github.com/FernandoTRecruiter" target="_blank" rel="noopener">GitHub ↗</a></div>
+</section>
+</main>
+
+<footer class="rodape">
+  <span>Generated with 🤖 Claude Code &amp; 😎 Fernandinho</span>
+  <span data-i18n="rodape_dados">As demos usam dados fictícios.</span>
+</footer>
+
+<!-- doca: janelas minimizadas aparecem aqui -->
+<div class="doca" aria-label="Janelas minimizadas"></div>
+
+<!-- o bonequinho que conta a história (o gato mora em js/gato.js) -->
+<div class="narrador" aria-live="polite">
+  <div class="balao" role="status">
+    <p class="fala"></p>
+    <div class="balao-ctrl">
+      <button data-fala-ant aria-label="Fala anterior">‹</button>
+      <span class="mono contador"></span>
+      <button data-fala-prox aria-label="Próxima fala">›</button>
+      <button data-voz aria-label="Ouvir em voz alta">🔈</button>
+      <button data-calar aria-label="Esconder o balão" title="Esconder">✕</button>
+    </div>
+  </div>
+  <button class="boneco" aria-label="Falar com o Fernando"><svg id="boneco" viewBox="0 0 160 200" aria-hidden="true"></svg></button>
+</div>
+
+<script src="js/conteudo.js"></script>
+<script src="js/projetos.js"></script>
+<script src="js/audios.js"></script>
+<script src="js/constelacao.js"></script>
+<script src="js/pipeline.js"></script>
+<script src="js/fluxos.js"></script>
+<script src="js/agentes.js"></script>
+<script src="js/boneco.js"></script>
+<script src="js/narrador.js"></script>
+<script src="js/gato.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

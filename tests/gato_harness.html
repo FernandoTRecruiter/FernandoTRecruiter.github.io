@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gato branco · bancada</title>
+<!--
+  Bancada do gato branco (página de desenvolvimento, não é o site).
+  Imita o que o gato usa do site: fundo, barra do topo grudada, três janelas com
+  .j-barra (para ele subir) e um .narrador falso no canto (boneco + balão).
+  Parâmetros: ?tema=escuro  ?lang=en  ?foto=1 (gato parado)  ?sem_passeio=1 (desliga o sorteio)
+              ?limpo=1 (esconde o painel de testes, para foto)
+-->
+<style>
+  :root {
+    --fundo: #F6F5F2; --sup: #FFFFFF; --sup2: #FAF9F7; --borda: #E7E4DE; --borda2: #D6D2CA;
+    --tx: #17151F; --tx2: #56526A; --tx3: #8A869B; --acc: #6D5AE6;
+    --sombra: 0 1px 2px rgba(23, 21, 31, .05), 0 12px 32px rgba(23, 21, 31, .07);
+    --mono: "DM Mono", ui-monospace, Consolas, monospace;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --fundo: #0E0D14; --sup: #16151F; --sup2: #1C1B27; --borda: #2A2838; --borda2: #3A374B;
+    --tx: #EEECF6; --tx2: #AAA6BD; --tx3: #78748B; --acc: #9D8CFF;
+    --sombra: 0 1px 2px rgba(0, 0, 0, .4), 0 14px 40px rgba(0, 0, 0, .3);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fundo); color: var(--tx); font: 16px/1.6 "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif; overflow-x: hidden; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .topo { position: sticky; top: 0; z-index: 70; height: 60px; display: flex; align-items: center; gap: 12px; padding: 0 24px; background: color-mix(in srgb, var(--fundo) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--borda); }
+  .topo b { font-weight: 700; }
+  .topo span { color: var(--tx3); font: 12px var(--mono); }
+  main { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  h1 { font-size: 40px; letter-spacing: -.03em; margin: 48px 0 8px; }
+  .intro { color: var(--tx2); max-width: 680px; margin: 0 0 28px; }
+  /* janelas iguais às do site (só o que o gato usa) */
+  .janela { margin-top: 40px; background: var(--sup); border: 1px solid var(--borda); border-radius: 14px; box-shadow: var(--sombra); overflow: hidden; }
+  .j-barra { display: flex; align-items: center; gap: 14px; height: 46px; padding: 0 14px; background: var(--sup2); border-bottom: 1px solid var(--borda); }
+  .j-botoes { display: flex; gap: 7px; }
+  .j-botoes i { width: 12px; height: 12px; border-radius: 50%; background: var(--borda2); }
+  .j-titulo { font: 12.5px var(--mono); color: var(--tx3); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .j-corpo { height: 360px; padding: 24px; display: grid; gap: 14px; align-content: start; }
+  .j-corpo i { display: block; height: 12px; border-radius: 6px; background: var(--borda); }
+  .rodape { max-width: 1180px; margin: 56px auto 0; padding: 18px 24px 160px; border-top: 1px solid var(--borda); color: var(--tx3); font-size: 13px; }
+  /* narrador falso, com as mesmas medidas do site */
+  .narrador { position: fixed; left: 18px; bottom: 12px; z-index: 72; display: flex; align-items: flex-end; pointer-events: none; }
+  .narrador > * { pointer-events: auto; }
+  .boneco { width: 104px; height: 124px; border: 1.5px dashed var(--borda2); border-radius: 18px; background: color-mix(in srgb, var(--sup) 70%, transparent); color: var(--tx3); font: 11px var(--mono); padding: 0; }
+  .balao { position: absolute; left: 88px; bottom: 104px; width: min(360px, calc(100vw - 120px)); background: var(--sup); border: 1px solid var(--borda2); border-radius: 18px 18px 18px 4px; box-shadow: var(--sombra); padding: 14px 16px 12px; transform-origin: 0 100%; transition: opacity .25s, transform .25s; }
+  .balao.escondido { opacity: 0; transform: scale(.9) translateY(8px); pointer-events: none; }
+  .fala { margin: 0; font-size: 15px; line-height: 1.5; min-height: 45px; }
+  /* painel de testes (só desta bancada) */
+  .painel { position: fixed; right: 16px; top: 72px; z-index: 90; width: 230px; display: grid; gap: 6px; padding: 12px; border: 1px solid var(--borda2); border-radius: 14px; background: var(--sup); box-shadow: var(--sombra); font-size: 12.5px; }
+  .painel b { font-size: 12px; color: var(--tx3); font-family: var(--mono); font-weight: 500; }
+  .painel .linha { display: flex; flex-wrap: wrap; gap: 5px; }
+  .painel button { border: 1px solid var(--borda2); background: var(--sup2); border-radius: 999px; padding: 3px 10px; font-size: 12px; }
+  .painel button:hover { border-color: var(--acc); }
+  .painel output { font: 11px/1.45 var(--mono); color: var(--tx2); white-space: pre-wrap; min-height: 32px; }
+  .painel[hidden] { display: none; }
+  @media (max-width: 640px) {
+    main { padding: 0 16px; }
+    h1 { font-size: 30px; }
+    .boneco { width: 78px; height: 92px; }
+    .narrador { left: 8px; bottom: 6px; }
+    .balao { left: 8px; bottom: 96px; width: calc(100vw - 32px); }
+    .painel { right: 8px; width: 200px; }
+  }
+</style>
+<link rel="stylesheet" href="../css/gato.css">
+</head>
+<body>
+<header class="topo"><b>Gato branco</b><span>bancada de desenvolvimento</span></header>
+<main>
+  <h1>Bancada do gato</h1>
+  <p class="intro">Clique no gato para ouvir uma piada. Segure e arraste: ele vai pendurado pelo cangote e a pele estica. Solte: ele cai, quica e volta para casa. O painel à direita dispara as ações na hora.</p>
+  <article class="janela" id="j1"><div class="j-barra"><div class="j-botoes"><i></i><i></i><i></i></div><span class="j-titulo">janela-um.html · demonstração</span></div><div class="j-corpo"><i style="width:62%"></i><i style="width:88%"></i><i style="width:74%"></i><i style="width:40%"></i></div></article>
+  <article class="janela" id="j2"><div class="j-barra"><div class="j-botoes"><i></i><i></i><i></i></div><span class="j-titulo">janela-dois · pipeline</span></div><div class="j-corpo"><i style="width:80%"></i><i style="width:55%"></i><i style="width:92%"></i></div></article>
+  <article class="janela" id="j3"><div class="j-barra"><div class="j-botoes"><i></i><i></i><i></i></div><span class="j-titulo">janela-tres · fluxos</span></div><div class="j-corpo"><i style="width:70%"></i><i style="width:84%"></i><i style="width:48%"></i></div></article>
+</main>
+<footer class="rodape">Página de teste: nada aqui vai para o site.</footer>
+
+<div class="narrador" aria-live="polite">
+  <div class="balao" role="status"><p class="fala">Oi! Eu sou o narrador de mentira desta bancada. Clique no gato.</p></div>
+  <button class="boneco" aria-label="Boneco (lugar reservado)">boneco</button>
+</div>
+
+<aside class="painel" aria-label="Painel de testes">
+  <b>ações</b>
+  <div class="linha">
+    <button data-acao="passeio">passeio</button><button data-acao="janela">janela</button><button data-acao="balao">balão</button>
+    <button data-acao="cursor">cursor</button><button data-acao="espreguicar">espreguiçar</button><button data-acao="dormir">dormir</button><button data-acao="casa">casa</button>
+  </div>
+  <b>página</b>
+  <div class="linha"><button data-tema>tema</button><button data-lang>PT/EN</button><button data-balao>mostra/esconde balão</button></div>
+  <output></output>
+</aside>
+
+<script src="../js/conteudo.js"></script>
+<script src="../js/gato.js"></script>
+<script>
+  // Liga o gato do jeito que o site vai ligar, com "falar" gravando em window.__falou (para a bateria).
+  (function () {
+    const q = new URLSearchParams(location.search);
+    if (q.get('tema') === 'escuro') document.documentElement.dataset.theme = 'dark';
+    let idioma = q.get('lang') === 'en' ? 'en' : 'pt';
+    const balao = document.querySelector('.balao'), fala = document.querySelector('.fala');
+    window.__falou = [];
+    const gato = window.Gato.iniciar({
+      ancora: document.querySelector('.narrador'),
+      falar: texto => { window.__falou.push(texto); fala.textContent = texto; balao.classList.remove('escondido'); },
+      textos: window.CONTEUDO.gatos,
+      idioma: () => idioma,
+      passeios: q.get('sem_passeio') !== '1'
+    });
+    window.__gato = gato;
+
+    // Painel: some na foto e com ?limpo=1.
+    const painel = document.querySelector('.painel'), saida = painel.querySelector('output');
+    if (q.get('foto') === '1' || q.get('limpo') === '1') { painel.hidden = true; return; }
+    painel.querySelectorAll('[data-acao]').forEach(b => b.addEventListener('click', () => {
+      const ok = window.Gato.acao(b.dataset.acao);
+      saida.textContent = ok ? 'rodando: ' + b.dataset.acao : 'não deu agora (sem janela, balão escondido ou sem mouse)';
+    }));
+    painel.querySelector('[data-tema]').addEventListener('click', () => {
+      const el = document.documentElement;
+      el.dataset.theme = el.dataset.theme === 'dark' ? 'light' : 'dark';
+      gato.tema();
+    });
+    painel.querySelector('[data-lang]').addEventListener('click', () => { idioma = idioma === 'pt' ? 'en' : 'pt'; saida.textContent = 'idioma: ' + idioma; });
+    painel.querySelector('[data-balao]').addEventListener('click', () => balao.classList.toggle('escondido'));
+    setInterval(() => { const e = window.Gato.estado(); if (e) saida.textContent = JSON.stringify(e).replace(/,"/g, ', "'); }, 700);
+  })();
+</script>
+</body>
+</html>
