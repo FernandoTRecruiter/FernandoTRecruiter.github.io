@@ -66,6 +66,21 @@ window.PROJETOS = [
     chips: ['Canvas', 'JavaScript', 'Game design']
   },
   {
+    pasta: 'imobil', pages: true, caminho: 'demo/', imagem: 'img/projetos/imobil.jpg',
+    titulo: { pt: 'Imobil (gestão de aluguéis)', en: 'Imobil (rental management)' },
+    desc: { pt: 'Projeto paralelo: modelo de sistema para imobiliária e proprietário, com mapa da carteira, 3D de cada prédio, contratos, cobranças, repasses e manutenção, e um portal para cada papel. Dados fictícios.',
+      en: 'Side project: a rental management template for agencies and landlords, with a portfolio map, a 3D view of each building, contracts, billing, owner payouts and maintenance, and a portal for each role. Fictional data.' },
+    chips: ['React', 'TypeScript', 'Leaflet']
+  },
+  {
+    // 17/11/2026: o app irmão do Imobil (mesmo repositório, demonstração em docs/demo/condominio/)
+    pasta: 'imobil', pages: true, caminho: 'demo/condominio/', imagem: 'img/projetos/condominio.jpg',
+    titulo: { pt: 'Condomínio (reservas e denúncias)', en: 'Condo (bookings and reports)' },
+    desc: { pt: 'Projeto paralelo: o morador reserva lavanderia e diarista e faz denúncia anônima pelo celular; a portaria e o síndico atendem pela web, com poderes por pessoa, avisos e e-mails agendados. Banco pronto para o Supabase. Dados fictícios.',
+      en: 'Side project: residents book the laundry and the cleaner and file anonymous reports from their phone; the front desk and the building manager answer on the web, with per-person permissions, notices and scheduled emails. Database ready for Supabase. Fictional data.' },
+    chips: ['React', 'TypeScript', 'Postgres']
+  },
+  {
     pasta: 'Automation.HappyBirthday.Static', pages: false, imagem: 'img/projetos/birthday.jpg',
     titulo: { pt: 'Robô de aniversário', en: 'Birthday bot' },
     desc: { pt: 'E-mail de parabéns automático no Google Apps Script. A versão 2 corrige o que só aparece em produção e não manda em dobro.',
